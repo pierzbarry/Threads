@@ -10,110 +10,153 @@
 <body>
 <div th:replace="base::nav"></div>
 
-<div class="container text-left">
-    <div class="row">
-        <div class="col">
-            <p>Category:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.category.name}"></p>
-        </div>
-    </div>
+<!--<div class="container text-left">-->
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Category:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.category.name}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Item:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.name}"></p>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Item:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.name}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Color:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.color}"></p>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Color:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.color}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Material:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.material}"></p>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Material:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.material}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Picture:</p>
-        </div>
-        <div class="col">
-            <img class="profile-picture"
-                 alt="picture"
-                 src="#"
-                 th:alt="Picture"
-                 th:src="${item.picturePath}"> <!-- th:text="${message.picturePath}" -->
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Picture:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <img class="profile-picture"-->
+<!--                 alt="picture"-->
+<!--                 src="#"-->
+<!--                 th:alt="Picture"-->
+<!--                 th:src="${item.picturePath}"> &lt;!&ndash; th:text="${message.picturePath}" &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Size:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.size}"></p>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Size:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.size}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Description:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.description}"></p>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Description:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.description}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="row">
-        <div class="col">
-            <p>Occasion:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.occasion.name}"></p><br/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <span>Climate:</span>
-        </div>
-        <div class="col">
-            <p th:text="${item.climate.name}"></p>
-        </div>
-    </div>
-    <div class="row" sec:authorize="isAuthenticated()">
-        <div class="col">
-            <p>User:</p>
-        </div>
-        <div class="col">
-            <p th:text="${item.user.firstName} +' ' +${item.user.lastName}"></p>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <p>Occasion:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.occasion.name}"></p><br/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <span>Climate:</span>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.climate.name}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row" sec:authorize="isAuthenticated()">-->
+<!--        <div class="col">-->
+<!--            <p>User:</p>-->
+<!--        </div>-->
+<!--        <div class="col">-->
+<!--            <p th:text="${item.user.firstName} +' ' +${item.user.lastName}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
 
+<!--</div>-->
+
+<!--<div class="text-center" sec:authorize="isAuthenticated()">-->
+<!--    <a th:href="@{/update/{id}(id=${item.id})}">edit</a> - -->
+<!--    <a class="delBtn"-->
+<!--       data-target="#myModal"-->
+<!--       data-toggle="modal"-->
+<!--       th:href="@{/delete/{id}(id=${item.id})}">delete</a>-->
+<!--</div>-->
+
+<br/><br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 mx-auto">
+            <div class="card">
+                <div class="card mx-auto" style="width: 14rem; border: 0px;">
+                    <img alt="Picture" th:src="${item.picturePath}" class="card-img-top resize mx-auto">
+                    <div class="card-body mx-auto">
+                        <h5 class="card-title"><a th:href="@{/detail/{id}(id=${item.id})}">[[${item.name}]]</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Item:</strong> [[${item.name}]]</li>
+                        <li class="list-group-item"><strong>Category:</strong> [[${item.category.name}]]</li>
+                        <li class="list-group-item">
+                            <strong>Color:</strong> [[${item.color}]]<br/>
+                            <strong>Material:</strong> [[${item.material}]]<br/>
+                            <strong>Size:</strong> [[${item.size}]]
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Occasion:</strong> [[${item.occasion.name}]]<br/>
+                            <strong>Climate:</strong> [[${item.climate.name}]]<br/>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <strong>Description:</strong> [[${item.description}]]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="text-center" sec:authorize="isAuthenticated()">
-    <a th:href="@{/update/{id}(id=${item.id})}">edit</a> -
-    <a class="delBtn"
-       data-target="#myModal"
-       data-toggle="modal"
-       th:href="@{/delete/{id}(id=${item.id})}">delete</a>
-</div>
 
 <div th:replace="base::delete"></div>
+
+<br/>
+<hr/>
 
 <div th:replace="base::footer"></div>
 

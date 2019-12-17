@@ -4,6 +4,9 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org">
 
+    <title>Wardobable</title>
+    <link rel="icon" href="https://i.imgur.com/LrbNfwv.png">
+
 <head th:fragment="header">
     <!-- Required meta tags -->
     <meta charset="utf-8"/>
@@ -13,6 +16,9 @@
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet"/>
     <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+
+    <!-- Header Scripts -->
+    <script src="https://kit.fontawesome.com/d0065a9586.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -24,6 +30,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/"><img src="https://i.imgur.com/LrbNfwv.png" class="imageControl"></a>
+            </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a aria-expanded="false"
                    aria-haspopup="true" class="nav-link dropdown-toggle"
@@ -34,18 +43,13 @@
                         th:text="${#authentication.name}"></span>
                 </a>
                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="/profile">My Profile</a>
-                    <a class="dropdown-item" href="/updateUser">Update Profile</a>
                     <a class="dropdown-item" href="/admin"
                        sec:authorize="hasAuthority('ADMIN')">Admin</a>
 
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider" sec:authorize="hasAuthority('ADMIN')"></div>
+
                     <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item" sec:authorize="!isAuthenticated()">
                 <a class="nav-link" href="/register">Register</a>
@@ -120,21 +124,16 @@
                         </span>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About Us</a>
-            </li>
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <a class="nav-link" href="/logout">Logout</a>
-            </li>
         </ul>
 
         <form action="#" class="form-inline my-2 my-lg-0" method="get" th:action="@{/search}">
             <input aria-label="Search" class="form-control mr-sm-2" name="search" placeholder="Title or Description"
                    type="search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
     </div>
+    <section class="extraStuff"></section>
 </nav>
 
 <div th:fragment="delete">
@@ -162,9 +161,60 @@
 
 <div th:fragment="footer">
 
-    <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--    <p class="mt-5 mb-3 text-muted text-center">&copy;Threads 2020</p>-->
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                <p class="text-justify">THREADS is your own personal virtual closet and is the answer to all your styling prayers! In a rut? Unsure of what to wear? Don't want to step outside and realize you're dressed for the wrong weather? Look no further! THREADS will help you with any and every fashion fumble. Sign up today! </p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/add">Add Item</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/about">Contact Us</a></li>
+                        <li><a href="/about">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text2"> Copyright &copy; 2020 All Rights Reserved by
+                        <a href="#">Threads</a>.</p>
+                </div>
+            </div>
+        </div>
+        <section class="extraStuff2"></section>
+
+    </footer>
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-50px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
     <script crossorigin="anonymous"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

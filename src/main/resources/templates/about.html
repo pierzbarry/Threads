@@ -8,10 +8,19 @@
 <body>
 <div th:replace="base :: nav "></div>
 
-<div class="container text-center">
-    <h2>Meet the Designers</h2>
+<!--Image Slider-->
+<div id="slides" class="carousel slide" data-ride="carousel">
 
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://i.imgur.com/rOtOEIS.png">
+            <div class="carousel-caption">
+                <h1 class="display-2">ABOUT US</h1>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div th:replace="base :: footer"></div>
 </body>
 </html>

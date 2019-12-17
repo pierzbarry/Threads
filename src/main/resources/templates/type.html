@@ -5,35 +5,43 @@
 </head>
 <body>
 <div th:replace="base::nav"></div>
-<div class="container text-center">
 
-    <div class="jumbotron lead">
-        <h2 th:text="${page_title}">Add Category</h2>
+    <!--Image Slider-->
+    <div id="slides" class="carousel slide" data-ride="carousel">
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://i.imgur.com/rOtOEIS.png">
+                <div class="carousel-caption">
+                    <h1 class="display-2">Add</h1>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <form action="#" method="post" th:action="@{'/'+ ${process}}" th:object="${object}">
-        <input th:field="*{id}" type="hidden"/>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="name">Name :</label>
-            <div class="col-sm-10 text-left">
-                <input class="form-control" th:field="*{name}" th:placeholder="${page_title}" type="text">
-                <strong>
+    <div class="container col-md-6 col-md-offset-3 text-center">
+
+        <div class="login-page">
+            <div class="form mx-auto">
+                <form action="#" method="post" th:action="@{'/'+ ${process}}" th:object="${object}">
+                    <input th:field="*{id}" type="hidden"/>
+                        <input th:field="*{name}" th:placeholder="${page_title}" type="text">
+                        <strong>
                      <span class="error-message"
                            th:errors="*{name}"
                            th:if="${#fields.hasErrors('name')}">
                      </span>
-                </strong>
+                        </strong>
+
+
+                    <button>Submit</button>
+                </form>
             </div>
         </div>
 
-        <div class="form-control-row">
-            <span class="error-message" th:text="${message}"></span>
-        </div>
+    </div>
 
-        <br/>
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-</div>
+<br/>
 <br/>
 <div th:replace="base::footer"></div>
 </body>

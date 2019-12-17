@@ -71,17 +71,17 @@ public class HomeController {
 
         User user = userService.getUser();
 
-        // Pagination code from Baeldung
         if (user != null) {
             model.addAttribute("formAttributes", new FormAttributes());
             model.addAttribute("items",itemRepository.findAll());
             if (userService.isUser()) {
-                model.addAttribute("items", itemRepository.findAllByUser(user, PageRequest.of(page, 4)));
+                model.addAttribute("items", itemRepository.findAllByUser(user));
             }
             if (userService.isAdmin()) {
-                model.addAttribute("items", itemRepository.findAll(PageRequest.of(page, 4)));
+                model.addAttribute("items", itemRepository.findAll());
             }
         } else {
+            // if user is not logged in only show example set of items (first four)
             model.addAttribute("items", itemRepository.findAll(PageRequest.of(page, 4)));
         }
 
@@ -166,28 +166,8 @@ public class HomeController {
         return "redirect:/";
     }
 
-//    @PostMapping("/process")
-//    public String processForm(@ModelAttribute Item item, @RequestParam("file") MultipartFile file, @RequestParam("picturepath") String picturePath) {
-//        if (!file.isEmpty()) {
-//            try {
-//                Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype" , "auto"));
-//                item.setPicturePath(uploadResult.get("url").toString());
-//
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        }
-//        if(file.isEmpty() && picturePath.equalsIgnoreCase("")){
-//            item.setPicturePath(null);
-//        }
-//        itemRepository.save(item);
-//        return "redirect:/";
-//
-//    }
-
     @RequestMapping("/detail/{id}")
     public String showItem(@PathVariable("id") long id, Model model) {
-//        findAll(model);
         model.addAttribute("item", itemRepository.findById(id).get());
         return "show";
     }
@@ -196,11 +176,9 @@ public class HomeController {
     public String updateItem(@PathVariable("id") long id,
                              @ModelAttribute Item item,
                              Model model) {
-//        findAll(model);
         item = itemRepository.findById(id).get();
         model.addAttribute("myuser", userService.getUser());
         model.addAttribute("item", itemRepository.findById(id).get());
-        //model.addAttribute("imageURL", item.getPicturePath());
 
         if (item.getPicturePath().isEmpty()) {
             model.addAttribute("imageLabel", "Upload Image");
@@ -242,13 +220,9 @@ public class HomeController {
 
     @GetMapping("/about")
     public String getAbout(Model model) {
-//        findAll(model);
         return "about";
     }
 
-    /**
-     * todo: put this code in the profile
-     */
     @GetMapping("/status")
     public String getStatus(Model model) {
         model.addAttribute("categories", categoryRepository.findAll());
